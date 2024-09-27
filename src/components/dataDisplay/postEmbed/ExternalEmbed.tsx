@@ -2,6 +2,7 @@ import { getHostname } from "@/lib/utils/text";
 import { AppBskyEmbedExternal } from "@atproto/api";
 import Image from "next/image";
 import Link from "next/link";
+import FrameEmbed from "./FrameEmbed";
 
 interface Props {
   embed: AppBskyEmbedExternal.View;
@@ -9,11 +10,10 @@ interface Props {
 }
 export default function ExternalEmbed(props: Props) {
   const { embed, depth } = props;
-
-  return (
+  const CardEmbed = () => (
     <>
       {depth < 2 && (
-        <article className="bg-skin-base border-skin-base mt-2 rounded-lg border hover:brightness-95">
+        <div className="hover:brightness-95">
           <Link
             href={embed.external.uri}
             target="blank"
@@ -24,22 +24,22 @@ export default function ExternalEmbed(props: Props) {
                 <Image
                   src={embed.external.thumb}
                   alt={embed.external.description}
+                  className="rounded-t-lg object-cover"
                   fill
-                  className="border-b-skin-base rounded-t-lg border-b object-cover"
                 />
               </div>
             )}
-            <div className="flex flex-col p-3">
-              <span className="text-skin-tertiary break-all text-sm">
-                {getHostname(embed.external.uri)}
-              </span>
-              <span className="text-skin-base font-medium [overflow-wrap:anywhere]">
-                {embed.external.title}
-              </span>
-            </div>
           </Link>
-        </article>
+        </div>
       )}
     </>
+  );
+
+  return (
+    <FrameEmbed
+      url={embed.external.uri}
+      title={embed.external.title}
+      defaultCard={<CardEmbed />}
+    />
   );
 }
