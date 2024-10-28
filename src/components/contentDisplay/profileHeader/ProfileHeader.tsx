@@ -1,6 +1,6 @@
 "use client";
 
-import FollowInfo from "@/components/dataDisplay/followInfo/FollowInfo";
+import UserStats from "@/components/dataDisplay/userStats/UserStats";
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import FallbackBanner from "@/assets/images/fallbackBanner.png";
 import Image from "next/image";
@@ -20,6 +20,7 @@ import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import EditProfile from "@/components/actions/editProfile/EditProfile";
 import { isInvalidHandle } from "@/lib/utils/text";
 import KnownFollowers from "@/components/dataDisplay/knownFollowers/KnownFollowers";
+import JoinedDate from "@/components/dataDisplay/joinedDate/JoinedDate";
 
 interface Props {
   handle: string;
@@ -30,6 +31,7 @@ export default function ProfileHeader(props: Props) {
   const [showAvatar, setShowAvatar] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
   const { data: session } = useSession();
+
   const {
     data: profile,
     isLoading,
@@ -53,7 +55,7 @@ export default function ProfileHeader(props: Props) {
         <ProfileHeaderSkeleton />
       )}
       {profile && contentFilter && (
-        <section className="border-skin-base overflow-hidden border-0 border-y md:rounded-t-2xl md:border-x">
+        <section className="border-skin-base overflow-hidden border-0 md:border-y border-b md:rounded-t-2xl md:border-x">
           <div className="relative">
             {isBlocked || hasBlockedYou ? (
               <Image
@@ -61,6 +63,7 @@ export default function ProfileHeader(props: Props) {
                 alt="Banner"
                 width={800}
                 height={192}
+                priority
                 className="h-40 object-cover opacity-30 contrast-75 md:h-48"
               />
             ) : (
@@ -77,6 +80,7 @@ export default function ProfileHeader(props: Props) {
                   alt="Banner"
                   width={800}
                   height={192}
+                  priority
                   className="h-40 object-cover md:h-48"
                 />
               </Button>
@@ -104,6 +108,7 @@ export default function ProfileHeader(props: Props) {
                     alt="Avatar"
                     width={95}
                     height={95}
+                    priority
                     className={`rounded-full object-cover ${
                       profile.avatar
                         ? "cursor-pointer hover:brightness-90"
@@ -135,7 +140,7 @@ export default function ProfileHeader(props: Props) {
               </div>
             </div>
           )}
-          <div className="m-3">
+          <div className="mx-3 mb-3 mt-1">
             <div className="flex flex-wrap items-center gap-x-2">
               <h1 className="text-skin-base break-all text-2xl font-semibold">
                 {profile.displayName || profile.handle}
@@ -157,12 +162,20 @@ export default function ProfileHeader(props: Props) {
             {profile?.description && (
               <ProfileBio description={profile.description} />
             )}
+
+            {profile.createdAt && (
+              <div className="my-2">
+                <JoinedDate date={new Date(profile.createdAt)} />
+              </div>
+            )}
+
             {profile?.handle && (
               <div className="mt-2">
-                <FollowInfo
+                <UserStats
                   handle={profile?.handle}
-                  followersCount={profile?.followersCount ?? 0}
-                  followsCount={profile?.followsCount ?? 0}
+                  followerCount={profile?.followersCount ?? 0}
+                  followCount={profile?.followsCount ?? 0}
+                  postsCount={profile.postsCount ?? 0}
                 />
               </div>
             )}

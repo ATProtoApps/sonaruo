@@ -1,6 +1,6 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { AppBskyFeedDefs } from "@atproto/api";
 import { PostView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import ThreadPost from "@/components/contentDisplay/threadPost/ThreadPost";
@@ -22,19 +22,22 @@ import { useRouter } from "next/navigation";
 import { MAX_REPLY_CONTAINERS } from "@/lib/consts/thread";
 import ThreadActionsContainer from "./ThreadActionsContainer";
 import { replyIncludes } from "@/lib/utils/text";
+import useProfile from "@/lib/hooks/bsky/actor/useProfile";
+import { useSession } from "next-auth/react";
 
 interface Props {
   id: string;
   handle: string;
   repliesTextFilter: string;
-  viewerAvatar?: string;
 }
 
 export default function PostThreadContainer(props: Props) {
-  const { id, handle, viewerAvatar, repliesTextFilter } = props;
+  const { id, handle, repliesTextFilter } = props;
   const [maxReplies, setMaxReplies] = useState(MAX_REPLY_CONTAINERS);
   const agent = useAgent();
   const router = useRouter();
+  const { data: session } = useSession();
+  const { data: profile } = useProfile(session?.user.bskySession.handle);
 
   const {
     data: thread,
@@ -138,11 +141,14 @@ export default function PostThreadContainer(props: Props) {
         <div>
           <ThreadPost post={thread?.post as PostView} filter={contentFilter} />
           <WhoCanReply post={thread?.post as PostView} />
-          <ThreadActionsContainer
-            avatar={viewerAvatar}
-            post={thread?.post as PostView}
-            rounded={textSearch === "" && filteredReplies === 0}
-          />
+          {profile && (
+            <ThreadActionsContainer
+              avatar={profile?.avatar}
+              post={thread?.post as PostView}
+              rounded={textSearch === "" && filteredReplies === 0}
+            />
+          )}
+
           {textSearch !== "" && filteredReplies === 0 && (
             <div className="border-skin-base border-t">
               <FeedAlert
@@ -189,7 +195,7 @@ export default function PostThreadContainer(props: Props) {
             }
             className="text-skin-base bg-skin-muted/70 hover:bg-skin-muted mx-auto block rounded-full px-2.5 py-2 text-sm font-medium"
           >
-            Show More Posts
+            Show More Replies
           </button>
         </div>
       )}

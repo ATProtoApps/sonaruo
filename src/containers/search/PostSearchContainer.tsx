@@ -37,13 +37,13 @@ export default function PostSearchContainer(props: Props) {
 
   const dataLength = posts?.pages.reduce(
     (acc, page) => acc + (page?.posts.length ?? 0),
-    0,
+    0
   );
 
   const isEmpty = !isFetching && !isFetchingNextPage && dataLength === 0;
 
   return (
-    <div>
+    <section>
       <InfiniteScroll
         dataLength={dataLength ?? 0}
         next={fetchNextPage}
@@ -64,7 +64,10 @@ export default function PostSearchContainer(props: Props) {
       {isFetching && !isFetchingNextPage && <FeedPostSkeleton />}
       {isEmpty && !hasNextPage && (
         <div className="border-skin-base border-t">
-          <FeedAlert variant="empty" message="No posts found" />
+          <FeedAlert
+            variant="empty"
+            message={`No posts found for ${query}`}
+          />
         </div>
       )}
       {error && (
@@ -75,6 +78,6 @@ export default function PostSearchContainer(props: Props) {
         !isFetching &&
         !hasNextPage &&
         !isFetchingNextPage && <EndOfFeed />}
-    </div>
+    </section>
   );
 }
