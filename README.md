@@ -1,12 +1,12 @@
-Note: this is a friendly fork of [Ouranos](https://github.com/pdelfan/ouranos/) for [@bmann](https://github.com/bmann) and [@pdelfan](https://github.com/pdelfan) to collaborate on experimenting with [Polar for funding](https://polar.sh/ATProtoApps/ouranos).
-
----
-
 ![logo](./public/logo.svg)
 
-# Ouranos
+# ~Ouranos~ Sonarou
 
 Your friendly Bluesky client for the web. Made with Next.js.
+
+Note: this is a friendly fork of [Ouranos](https://github.com/pdelfan/ouranos/) for [@bmann](https://github.com/bmann) and [@pdelfan](https://github.com/pdelfan) to collaborate on experimenting with [Polar for funding](https://polar.sh/ATProtoApps/sonaruo). Browse fundable issues and donate to the ones you want to support, or add and fund an issue of your own.
+
+PRs are welcome by anyone! We are using this codebase as a way for people to easily experiment with a client-side only Bluesky / AT Protocol app.
 
 ## Getting Started
 
@@ -24,14 +24,6 @@ The following environment variables are required:
 - `NEXTAUTH_URL` (`http://localhost:3000` while running locally. You won't need this variable in production if you're deploying to Vercel.)
 
 To make changes, you can create a new branch and merge with development, or push directly to development. When you are ready to deploy, you can merge into preview (staging) or main (production) branches, which will automatically build and deploy to Vercel.
-
-## Project Roadmap
-
-Latest changes and updates are added to `Ouranos Roadmap` under [Projects](https://github.com/users/pdelfan/projects/1).
-
-## FAQ
-
-Please visit [https://useouranos.app/about](https://useouranos.app/about).
 
 ## License
 
