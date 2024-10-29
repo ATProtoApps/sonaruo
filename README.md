@@ -1,4 +1,4 @@
-![logo](./public/logo.svg)
+![logo](./public/sonaruo.svg)
 
 # ~Ouranos~ Sonaruo
 
