@@ -5,9 +5,9 @@
 @layer base {
     :root {
         /* Brand */
-        --color-primary: 169, 74, 255;
-        --color-primary-light: 191, 119, 255;
-        --color-primary-dark: 151, 33, 255;
+        --color-primary: 109, 205, 13;
+        --color-primary-light: 135, 244, 25;
+        --color-primary-dark: 79, 158, 0;
 
         /* Background */
         --color-background-base: 255, 255, 255; /* bg-white */
@@ -24,8 +24,8 @@
         --color-text-secondary: 115, 115, 115; /* text-neutral-500 */
         --color-text-tertiary: 163, 163, 163; /* text-neutral-400 */
         --color-text-base-inverted: 255, 255, 255; /* text-white */
-        --color-text-link-base: 169, 74, 255; /* primary */
-        --color-text-link-base-hover: 151, 33, 255; /* primary-dark */
+        --color-text-link-base: 109, 205, 13; /* primary */
+        --color-text-link-base-hover: 79, 158, 0; /* primary-dark */
 
         /* Border and outline */
         --color-border-base: 229, 229, 229; /* border-neutral-200 */
@@ -48,9 +48,9 @@
 
     [data-theme="dim"] {
         /* Brand */
-        --color-primary: 169, 74, 255;
-        --color-primary-light: 191, 119, 255;
-        --color-primary-dark: 151, 33, 255;
+        --color-primary: 109, 205, 13;
+        --color-primary-light: 135, 244, 25;
+        --color-primary-dark: 79, 158, 0;
 
         /* Background */
         --color-background-base: 38, 38, 38; /* bg-neutral-800 */
@@ -67,8 +67,8 @@
         --color-text-secondary: 212, 212, 212; /* text-neutral-300 */
         --color-text-tertiary: 163, 163, 163; /* text-neutral-400 */
         --color-text-base-inverted: 64, 64, 64; /* text-neutral-700 */
-        --color-text-link-base: 191, 119, 255; /* primary-light */
-        --color-text-link-base-hover: 169, 74, 255; /* primary */
+        --color-text-link-base: 135, 244, 25; /* primary-light */
+        --color-text-link-base-hover: 109, 205, 13; /* primary */
 
         /* Border and outline */
         --color-border-base: 64, 64, 64; /* border-neutral-700 */
@@ -91,9 +91,9 @@
 
     [data-theme="dark"] {
         /* Brand */
-        --color-primary: 169, 74, 255;
-        --color-primary-light: 191, 119, 255;
-        --color-primary-dark: 151, 33, 255;
+        --color-primary: 109, 205, 13;
+        --color-primary-light: 135, 244, 25;
+        --color-primary-dark: 79, 158, 0;
 
         /* Background */
         --color-background-base: 0, 0, 0; /* bg-black */
@@ -110,8 +110,8 @@
         --color-text-secondary: 212, 212, 212; /* text-neutral-300 */
         --color-text-tertiary: 163, 163, 163; /* text-neutral-400 */
         --color-text-base-inverted: 64, 64, 64; /* text-neutral-700 */
-        --color-text-link-base: 191, 119, 255; /* primary-light */
-        --color-text-link-base-hover: 169, 74, 255; /* primary */
+        --color-text-link-base: 135, 244, 25; /* primary-light */
+        --color-text-link-base-hover: 109, 205, 13; /* primary */
 
         /* Border and outline */
         --color-border-base: 64, 64, 64; /* border-neutral-700 */
