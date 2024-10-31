@@ -71,11 +71,9 @@ export default function PostThreadContainer(props: Props) {
     setFilteredReplies(
       replyChains
         .map((replyArr) =>
-          replyArr.some((reply) =>
-            replyIncludes(reply.post.record, textSearch),
-          ),
+          replyArr.some((reply) => replyIncludes(reply.post.record, textSearch))
         )
-        .filter(Boolean).length,
+        .filter(Boolean).length
     );
   }, [replyChains, textSearch]);
 
@@ -91,44 +89,28 @@ export default function PostThreadContainer(props: Props) {
 
   if (!hasValidThread) {
     return (
-      <div>
-        <div className="md:border-skin-base md:rounded-t-2xl md:border md:border-x">
-          <h2 className="text-skin-base px-3 py-2 text-center text-xl font-semibold">
-            Post
-          </h2>
+      <section className="border-skin-base border border-t-0 p-3 md:rounded-b-2xl">
+        {AppBskyFeedDefs.isBlockedPost(thread) && <BlockedEmbed depth={0} />}
+        {AppBskyFeedDefs.isNotFoundPost(thread) && <NotFoundEmbed depth={0} />}
+        {AppBskyFeedDefs.isBlockedAuthor(thread) && <BlockedEmbed depth={0} />}
+        {isError && (
+          <FeedAlert
+            variant="badResponse"
+            message={error.message}
+            standalone={true}
+          />
+        )}
+        <div className="mt-3 flex justify-center">
+          <Button onClick={() => router.push("/dashboard/home")}>
+            Go Home
+          </Button>
         </div>
-        <section className="border-skin-base border border-t-0 p-3 md:rounded-b-2xl">
-          {AppBskyFeedDefs.isBlockedPost(thread) && <BlockedEmbed depth={0} />}
-          {AppBskyFeedDefs.isNotFoundPost(thread) && (
-            <NotFoundEmbed depth={0} />
-          )}
-          {AppBskyFeedDefs.isBlockedAuthor(thread) && (
-            <BlockedEmbed depth={0} />
-          )}
-          {isError && (
-            <FeedAlert
-              variant="badResponse"
-              message={error.message}
-              standalone={true}
-            />
-          )}
-          <div className="mt-3 flex justify-center">
-            <Button onClick={() => router.push("/dashboard/home")}>
-              Go Home
-            </Button>
-          </div>
-        </section>
-      </div>
+      </section>
     );
   }
 
   return (
     <div>
-      <div className="border-skin-base border-b-0 md:rounded-t-2xl md:border md:border-x md:border-b-0">
-        <h2 className="text-skin-base px-3 py-2 text-center text-xl font-semibold">
-          Post
-        </h2>
-      </div>
       {(isFetching || isLoading) && <FeedPostSkeleton />}
       {parentChain && parentChain.length > 0 && contentFilter && (
         <ParentContainer
@@ -139,7 +121,16 @@ export default function PostThreadContainer(props: Props) {
 
       {thread && contentFilter && (
         <div>
-          <ThreadPost post={thread?.post as PostView} filter={contentFilter} />
+          <div
+            className={`border-skin-base ${
+              parentChain.length > 0 && "border-t"
+            } p-3 last:border-b md:border-x md:last:rounded-b-2xl`}
+          >
+            <ThreadPost
+              post={thread?.post as PostView}
+              filter={contentFilter}
+            />
+          </div>
           <WhoCanReply post={thread?.post as PostView} />
           {profile && (
             <ThreadActionsContainer
@@ -171,10 +162,10 @@ export default function PostThreadContainer(props: Props) {
               <>
                 {showReplies &&
                   replyArr.some((reply) =>
-                    replyIncludes(reply.post.record, textSearch),
+                    replyIncludes(reply.post.record, textSearch)
                   ) && (
                     <div
-                      className="border-skin-base border border-x-0 p-3 first:border-t-0 last:border-b md:border-x md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
+                      className="border-skin-base border border-x-0 first:border-t-0 last:border-b md:border-x md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
                       key={i}
                     >
                       <RepliesContainer
@@ -193,7 +184,7 @@ export default function PostThreadContainer(props: Props) {
             onClick={() =>
               setMaxReplies((prevMax) => prevMax + MAX_REPLY_CONTAINERS)
             }
-            className="text-skin-base bg-skin-muted/70 hover:bg-skin-muted mx-auto block rounded-full px-2.5 py-2 text-sm font-medium"
+            className="text-skin-secondary bg-skin-muted hover:bg-skin-muted/90 mx-auto block rounded-full px-2.5 py-2 text-sm font-medium"
           >
             Show More Replies
           </button>

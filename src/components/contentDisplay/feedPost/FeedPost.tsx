@@ -52,8 +52,8 @@ export default function FeedPost(props: Props) {
   if (!showPost) {
     return (
       <>
-        {reason && <Reason reason={reason} />}
-        <article>
+        <article className="p-3">
+          {reason && <Reason reason={reason} />}
           <div className="relative flex items-start gap-3">
             <Avatar size="md" className="z-20 shrink-0" />
             <div className={`flex grow flex-col ${isParent && "pb-6"}`}>
@@ -73,7 +73,6 @@ export default function FeedPost(props: Props) {
 
   return (
     <>
-      {reason && <Reason reason={reason} />}
       <article
         onClick={(e) => {
           e.stopPropagation();
@@ -83,8 +82,10 @@ export default function FeedPost(props: Props) {
             )}`
           );
         }}
-        className="cursor-pointer"
+        className="cursor-pointer hover:bg-skin-secondary p-3"
       >
+        {reason && <Reason reason={reason} />}
+
         <div className="relative flex items-start gap-3">
           <div
             onClick={(e) => {

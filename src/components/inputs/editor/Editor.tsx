@@ -116,7 +116,7 @@ export default function Editor(props: Props) {
   });
 
   const hasContent =
-    images || linkEmbed || richText.graphemeLength !== 0 ? true : false;
+    quote || images || linkEmbed || richText.graphemeLength !== 0 ? true : false;
 
   const sendPost = usePublishPost({
     text: editor?.getJSON() ?? {},
@@ -126,7 +126,7 @@ export default function Editor(props: Props) {
     languages: languages.map((lang) => lang.code),
     images,
     label,
-    threadGate,
+    threadGate,    
   });
 
   if (!editor) return null;
