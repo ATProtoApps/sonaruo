@@ -10,22 +10,21 @@ interface Props {
 
 export default function ThreadActionsContainer(props: Props) {
   const { avatar, post, rounded } = props;
-  const postHasReplies = !!post.replyCount;
 
   return (
-    <div
-      className={`md:border-x-skin-base flex flex-wrap justify-between w-full items-center gap-3 border-x-0 px-3 py-2 md:border-x ${
-        rounded
-          ? "border-skin-base border md:rounded-b-2xl"
-          : "border-t-skin-base border-t"
-      }`}
-    >
-      <ComposePrompt avatar={avatar} post={post} />
-      {postHasReplies && (
-        <div className="w-full sm:w-fit sm:max-w-sm">
+    <div>
+      <div
+        className={`flex flex-wrap justify-between gap-3 md:border-x-skin-base border-x-0 px-3 py-2 md:border-x ${
+          rounded
+            ? "border-skin-base border md:rounded-b-2xl"
+            : "border-t-skin-base border-t"
+        }`}
+      >
+        <ComposePrompt avatar={avatar} post={post} />
+        <div className="w-full sm:w-fit ml-auto">
           <Search placeholder="Search for replies" />
         </div>
-      )}
+      </div>
     </div>
   );
 }

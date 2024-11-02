@@ -19,11 +19,11 @@ const PostContainer = memo(function PostContainer(props: Props) {
   };
 
   return (
-    <div className="border-skin-base flex flex-col justify-between border border-x-0 p-3 first:border-t-0 last:border-b md:border-x odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0">
-      {parent?.post && (
+    <div className="border-skin-base flex flex-col justify-between border border-x-0 first:border-t-0 last:border-b md:border-x odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0">
+      {parent?.post && !post.reason && (
         <FeedPost
           post={parent}
-          isReply={isReply}
+          isReply={false}
           isParent={true}
           filter={filter}
         />
@@ -31,7 +31,7 @@ const PostContainer = memo(function PostContainer(props: Props) {
       {
         <FeedPost
           post={post}
-          isReply={false}
+          isReply={isReply}
           isParent={false}
           filter={filter}
         />

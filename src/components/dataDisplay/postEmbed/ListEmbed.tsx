@@ -32,19 +32,19 @@ export default function ListEmbed(props: Props) {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="border-skin-base bg-skin-base mt-2 block cursor-pointer rounded-xl border p-3 hover:brightness-95"
+          className="border-skin-base bg-skin-base mt-2 block cursor-pointer rounded-xl border p-3 hover:bg-skin-secondary"
         >
           <div className="flex items-start gap-2">
             <div className="bg-primary rounded-lg p-2.5">{selectedIcon}</div>
             <div className="flex flex-col">
-              <span className="text-skin-base hover:text-skin-secondary line-clamp-1 overflow-ellipsis break-all font-semibold">
+              <span className="text-skin-base hover:text-skin-secondary line-clamp-1 overflow-ellipsis break-all font-medium">
                 {list.name}
               </span>
-              <span className="text-skin-tertiary break-all font-medium">
+              <span className="text-skin-tertiary break-all font-medium text-sm">
                 {type} by {list.creator.displayName || list.creator.handle}
               </span>
               {list.description && (
-                <p className="text-skin-base break-all">{list.description}</p>
+                <p className="text-skin-base break-all mt-1">{list.description}</p>
               )}
             </div>
           </div>

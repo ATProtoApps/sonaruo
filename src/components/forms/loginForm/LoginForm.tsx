@@ -57,12 +57,13 @@ export default function LoginForm() {
 
   if (isRedirecting) {
     return (
-      <section className="bg-skin-secondary max-w-xs rounded-2xl p-5">
+      <section className="bg-skin-base border border-skin-base/30 shadow-2xl shadow-primary-light/30 max-w-xs rounded-2xl p-5">
         <Image
           src="/logo.svg"
           alt="Ouranos logo"
           width={150}
           height={50}
+          priority
           className="mx-auto mb-3"
         />
         <h1 className="text-skin-base mb-1 text-center text-xl font-semibold">
@@ -78,7 +79,7 @@ export default function LoginForm() {
   }
 
   return (
-    <section className="bg-skin-secondary max-w-xs rounded-2xl p-5">
+    <section className="bg-skin-base border border-skin-base/30 max-w-xs rounded-2xl p-5 shadow-2xl shadow-primary-light/30">
       <Image
         src="/logo.svg"
         alt="Ouranos logo"
@@ -99,9 +100,6 @@ export default function LoginForm() {
           app password
         </Link>{" "}
         to log in.
-      </p>
-      <p className="text-skin-secondary text-sm font-medium">
-        Ouranos is in early access, some features may not work as intended.
       </p>
       <form
         className="mt-5 text-sm font-medium"

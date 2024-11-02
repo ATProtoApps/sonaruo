@@ -43,7 +43,7 @@ export default function Gallery(props: Props) {
           break;
       }
     },
-    [handleBackward, handleForward],
+    [handleBackward, handleForward]
   );
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Gallery(props: Props) {
           className="z-50 w-full"
         >
           <Button
-            className="text-skin-icon-inverted bg-skin-overlay hover:bg-skin-inverted hover:text-skin-inverted fixed left-3 top-3 z-[70] rounded-full p-3.5"
+            className="text-skin-secondary bg-skin-secondary hover:bg-skin-base hover:text-skin-base fixed left-3 top-3 z-[70] rounded-full p-3.5 border border-skin-base"
             onClick={(e) => {
               e.stopPropagation();
               onClose();
@@ -74,24 +74,24 @@ export default function Gallery(props: Props) {
           </Button>
           {imageCount > 1 && currentIndex > 0 && (
             <Button
-              className="text-skin-icon-inverted bg-skin-overlay hover:bg-skin-inverted hover:text-skin-inverted fixed left-3 top-1/2 z-[70] rounded-full p-3.5"
+              className="text-skin-secondary bg-skin-secondary hover:bg-skin-base hover:text-skin-base fixed left-3 top-1/2 z-[70] rounded-full p-3.5 border border-skin-base"
               onClick={(e) => {
                 e.stopPropagation();
                 handleBackward();
               }}
             >
-              <BiLeftArrowAlt />
+              <BiLeftArrowAlt className="text-lg" />
             </Button>
           )}
           {imageCount > 1 && currentIndex < imageCount - 1 && (
             <Button
-              className="text-skin-icon-inverted bg-skin-overlay hover:bg-skin-inverted hover:text-skin-inverted fixed right-3 top-1/2 z-[70] rounded-full p-3.5"
+              className="text-skin-secondary bg-skin-secondary hover:bg-skin-base hover:text-skin-base fixed right-3 top-1/2 z-[70] rounded-full p-3.5 border border-skin-base"
               onClick={(e) => {
                 e.stopPropagation();
                 handleForward();
               }}
             >
-              <BiRightArrowAlt />
+              <BiRightArrowAlt className="text-lg" />
             </Button>
           )}
 
@@ -101,6 +101,7 @@ export default function Gallery(props: Props) {
               alt={images[currentIndex].alt}
               width={images[currentIndex].aspectRatio?.width ?? 900}
               height={images[currentIndex].aspectRatio?.height ?? 900}
+              priority
               className="fixed inset-0 z-[60] mx-auto h-full w-fit object-contain"
             />
           )}
@@ -111,6 +112,7 @@ export default function Gallery(props: Props) {
               alt={"Image"}
               width={900}
               height={900}
+              priority
               className="fixed inset-0 z-[60] mx-auto h-full w-fit object-contain"
             />
           )}

@@ -25,7 +25,7 @@ export default function FeedEmbed(props: Props) {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="border-skin-base bg-skin-base mt-2 flex flex-col gap-2 rounded-2xl border p-3 hover:brightness-95"
+          className="border-skin-base bg-skin-base mt-2 flex flex-col gap-2 rounded-2xl border p-3 hover:bg-skin-secondary"
         >
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-3">
@@ -37,10 +37,10 @@ export default function FeedEmbed(props: Props) {
                 className={`rounded-lg ${!feed.avatar && "bg-skin-muted border-skin-base border"}`}
               />
               <div className="flex flex-col">
-                <h2 className="text-skin-base break-words font-semibold">
+                <h2 className="text-skin-base break-words font-medium">
                   {feed.displayName}
                 </h2>
-                <h3 className="text-skin-secondary break-all text-sm">
+                <h3 className="text-skin-tertiary font-medium break-all text-sm">
                   By @{feed.creator.handle}
                 </h3>
               </div>

@@ -34,10 +34,7 @@ export default function ThreadPost(props: Props) {
   }, []);
 
   return (
-    <article
-      ref={threadPostRef}
-      className="border-skin-base border-t p-3 last:border-b md:border-x md:last:rounded-b-2xl"
-    >
+    <article ref={threadPostRef}>
       <div className="relative flex items-start gap-3">
         <button
           onClick={(e) => {
@@ -87,7 +84,7 @@ export default function ThreadPost(props: Props) {
         {!hidden && (
           <>{post.embed && <PostEmbed content={post.embed} depth={0} />}</>
         )}
-        <div className="text-skin-tertiary mt-3 font-medium">
+        <div className="text-sm text-skin-tertiary mt-3 font-medium">
           {getFormattedDate(post.indexedAt)}
         </div>
       </div>
