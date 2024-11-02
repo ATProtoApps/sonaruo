@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   swcMinify: false,
   images: {
-    unoptimized: true,    
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
