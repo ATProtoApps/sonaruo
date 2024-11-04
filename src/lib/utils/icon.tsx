@@ -1,14 +1,18 @@
 import { FeedAlert, ThreadgateSetting } from "../../../types/feed";
 import { HiMiniShieldExclamation } from "react-icons/hi2";
 import { PiWarningCircleFill } from "react-icons/pi";
-import { FaCircleCheck } from "react-icons/fa6";
+import {
+  FaCircleCheck,
+  FaMapLocation,
+  FaPersonChalkboard,
+} from "react-icons/fa6";
 import {
   BiRepost,
   BiSolidErrorAlt,
   BiSolidHeart,
   BiSolidUserPlus,
 } from "react-icons/bi";
-import { IoCloudOffline } from "react-icons/io5";
+import { IoCloudOffline, IoVideocam } from "react-icons/io5";
 import { IoMdGlobe } from "react-icons/io";
 import { MdBlock } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -78,5 +82,18 @@ export const getThreadGateIcon = (value: ThreadgateSetting[]) => {
 
   if (value.length === 2) {
     return <BsFillPeopleFill />;
+  }
+};
+
+export const getEventModeIcon = (mode?: Mode) => {
+  switch (mode) {
+    case "events.smokesignal.calendar.event#virtual":
+      return <IoVideocam />;
+    case "events.smokesignal.calendar.event#inperson":
+      return <FaMapLocation />;
+    case "events.smokesignal.calendar.event#hybrid":
+      return <FaPersonChalkboard />;
+    default:
+      return <FaMapLocation />; // default in smokesignal
   }
 };

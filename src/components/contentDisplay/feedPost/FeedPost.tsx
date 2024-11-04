@@ -27,6 +27,7 @@ interface Props {
 
 export default function FeedPost(props: Props) {
   const { post, isReply, isParent, filter } = props;
+  console.log(post);
   const { author, indexedAt } = post.post;
   const { reason } = post;
   const { showToggle, shouldHide, message } = getPostFilter(post, filter);
@@ -75,8 +76,8 @@ export default function FeedPost(props: Props) {
         e.stopPropagation();
         router.push(
           `/dashboard/user/${post.post.author.handle}/post/${getPostId(
-            post.post.uri
-          )}`
+            post.post.uri,
+          )}`,
         );
       }}
       className="cursor-pointer hover:bg-skin-secondary p-3"

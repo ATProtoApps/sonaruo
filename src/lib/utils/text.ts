@@ -103,7 +103,7 @@ export async function detectLanguage(text: string) {
 // the default is English for now
 export function getTranslateLink(text: string, lang: string = "en"): string {
   return `https://translate.google.com/?sl=auto&tl=${lang}&text=${encodeURIComponent(
-    text
+    text,
   )}`;
 }
 
@@ -125,3 +125,30 @@ export const replyIncludes = (reply: PostView["record"], term: string) => {
   if (!text || !text.toLowerCase().includes(term.toLowerCase())) return false;
   return true;
 };
+
+export function getEventMode(mode: Mode): "Virtual" | "In Person" | "Hybrid" {
+  switch (mode) {
+    case "events.smokesignal.calendar.event#virtual":
+      return "Virtual";
+    case "events.smokesignal.calendar.event#inperson":
+      return "In Person";
+    case "events.smokesignal.calendar.event#hybrid":
+      return "Hybrid";
+    default:
+      return "In Person"; // default in smokesignal
+  }
+}
+
+export function getEventParticipationStatus(
+  status?: RSVP,
+): "Going" | "Not Going" | "Interested" | "Not available" {
+  if (status === "events.smokesignal.calendar.rsvp#going") {
+    return "Going";
+  } else if (status === "events.smokesignal.calendar.rsvp#notgoing") {
+    return "Not Going";
+  } else if (status === "events.smokesignal.calendar.rsvp#interested") {
+    return "Interested";
+  }
+
+  return "Not available";
+}

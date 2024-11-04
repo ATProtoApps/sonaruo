@@ -40,6 +40,11 @@ export default function ProfileTabs() {
           path={`${basePath}/lists`}
           isActive={pathname === `${basePath}/lists`}
         />
+        <TabItem
+          label="Events"
+          path={`${basePath}/events`}
+          isActive={pathname === `${basePath}/events`}
+        />
       </Tabs>
     </div>
   );

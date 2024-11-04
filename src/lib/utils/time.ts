@@ -35,3 +35,40 @@ export function getFormattedDate(date: string): string {
 
   return formattedWithAt;
 }
+
+export function getMonth(
+  date: string,
+  type: "short" | "long" = "short",
+): string {
+  const options: Intl.DateTimeFormatOptions = {
+    month: type,
+  };
+
+  const formattedMonth: string = new Date(date).toLocaleString(
+    "en-US",
+    options,
+  );
+
+  return formattedMonth;
+}
+
+export function getDay(date: string): string {
+  const options: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+  };
+
+  const formattedDay: string = new Date(date).toLocaleString("en-US", options);
+
+  return formattedDay;
+}
+
+export function getHour(date: string): string {
+  const options: Intl.DateTimeFormatOptions = {
+    hour: "numeric",
+    hour12: true,
+  };
+
+  const formattedHour: string = new Date(date).toLocaleString("en-US", options);
+
+  return formattedHour;
+}
