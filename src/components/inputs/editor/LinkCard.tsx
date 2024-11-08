@@ -35,9 +35,10 @@ export default function LinkCard(props: Props) {
     return (
       <article className="border-skin-base relative animate-pulse rounded-2xl border">
         <div className="bg-skin-muted relative h-44 w-full rounded-t-2xl" />
-        <div className="flex grow flex-col gap-3 p-3">
-          <div className="bg-skin-muted h-5 w-2/5" />
-          <div className="bg-skin-muted h-5 w-full" />
+        <div className="flex grow flex-col gap-1 p-3">
+          <div className="bg-skin-muted h-3 w-2/5" />
+          <div className="bg-skin-muted h-4 w-1/2" />
+          <div className="bg-skin-muted h-3 w-3/4" />
         </div>
       </article>
     );
@@ -45,7 +46,7 @@ export default function LinkCard(props: Props) {
 
   if (error) {
     return (
-      <div className="border-skin-base flex flex-wrap items-center justify-between w-full gap-3 rounded-2xl border p-3">
+      <div className="bg-skin-base border-skin-base flex flex-wrap items-center justify-between w-full gap-3 rounded-2xl border p-3">
         <div className="flex flex-col gap-3">
           <span className="text-skin-base w-fit shrink-0">
             Could not get info about this link
@@ -55,7 +56,7 @@ export default function LinkCard(props: Props) {
           </span>
         </div>
         <Button
-          className="text-skin-icon-inverted bg-skin-overlay hover:bg-skin-inverted hover:text-skin-inverted rounded-full p-1"
+          className="text-skin-secondary bg-skin-secondary hover:bg-skin-base hover:text-skin-base rounded-full p-2 border border-skin-base"
           onClick={(e) => {
             e.preventDefault();
             onRemoveLinkCard(link);
@@ -70,7 +71,7 @@ export default function LinkCard(props: Props) {
   return (
     <article className="bg-skin-base border-skin-base relative rounded-2xl border">
       <Button
-        className="text-skin-icon-inverted bg-skin-overlay hover:bg-skin-inverted hover:text-skin-inverted absolute left-0 top-0 z-50 m-2 rounded-full p-1"
+        className="text-skin-secondary bg-skin-secondary hover:bg-skin-base hover:text-skin-base absolute left-0 top-0 z-50 m-2 p-2 border border-skin-base rounded-full"
         onClick={(e) => {
           e.preventDefault();
           onRemoveLinkCard(link);
@@ -97,6 +98,11 @@ export default function LinkCard(props: Props) {
         {data?.title && (
           <span className="text-skin-base font-medium [overflow-wrap:anywhere]">
             {data.title}
+          </span>
+        )}
+        {data?.description && (
+          <span className="text-skin-secondary text-sm line-clamp-2">
+            {data.description}
           </span>
         )}
       </div>

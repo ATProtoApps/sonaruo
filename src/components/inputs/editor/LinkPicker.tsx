@@ -2,9 +2,8 @@ import type { Editor } from "@tiptap/react";
 import Button from "@/components/actions/button/Button";
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import Input from "../input/Input";
+import Input from "@/components/inputs/input/Input";
 import { BiLink, BiUnlink } from "react-icons/bi";
-import { BiPlus } from "react-icons/bi";
 import { isValidUrl } from "@/lib/utils/link";
 
 interface Props {
@@ -72,50 +71,51 @@ export default function LinkPicker(props: Props) {
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-skin-overlay-muted fixed inset-0 z-50" />
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <Dialog.Content>
-            <div className="flex flex-wrap flex-col gap-2 bg-skin-base p-2 border-skin-base border rounded-xl">
-              <div className="flex flex-wrap gap-2">
-                <Input
-                  type="url"
-                  placeholder="https://your-link.com"
-                  onChange={(e) => {
-                    setHref(e.currentTarget.value);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      onAddLink(e.currentTarget.value);
-                    }
-                  }}
-                  onInput={() => setShowError(false)}
-                />
-              </div>
+        <Dialog.Content>
+          <section className="animate-fade-up animate-duration-200 bg-skin-base border-skin-base fixed bottom-0 z-50 flex h-fit w-full flex-col justify-between overflow-scroll rounded-t-3xl p-3 pb-16 shadow-2xl border-t no-scrollbar">
+            <h2 className="text-skin-base mb-2 text-center text-xl font-semibold">
+              Add a link
+            </h2>
+            <div className="md:max-w-2xl w-full md:mx-auto">
+              <Input
+                type="url"
+                placeholder="https://your-link.com"
+                onChange={(e) => {
+                  setHref(e.currentTarget.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    onAddLink(e.currentTarget.value);
+                  }
+                }}
+                onInput={() => setShowError(false)}
+              />
+
               {showError && (
-                <small className="text-status-danger block font-medium">
+                <small className="text-status-danger block font-medium mt-2">
                   Invalid URL
                 </small>
               )}
-
-              <div className="mt-2 flex justify-end items-center gap-2">
-                <Button
-                  onClick={onClose}
-                  className="hover:bg-skin-secondary border-skin-base text-skin-base rounded-full border px-4 py-2 text-sm font-semibold"
-                >
-                  Cancel
-                </Button>
-                <Button
-                  onClick={() => {
-                    onAddLink(href);
-                  }}
-                  className="bg-primary hover:bg-primary-dark text-white rounded-full px-4 py-2 text-sm font-semibold"
-                >
-                  Add link
-                </Button>
-              </div>
             </div>
-          </Dialog.Content>
-        </div>
+
+            <div className="mt-2 gap-2 md:max-w-2xl w-full justify-end mr-auto flex items-center md:mx-auto">
+              <Button
+                onClick={onClose}
+                className="hover:bg-skin-secondary border-skin-base text-skin-base rounded-full border px-4 py-2 text-sm font-semibold"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => {
+                  onAddLink(href);
+                }}
+                className="bg-primary hover:bg-primary-dark text-white rounded-full px-4 py-2 text-sm font-semibold"
+              >
+                Add link
+              </Button>
+            </div>
+          </section>
+        </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
   );

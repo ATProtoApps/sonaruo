@@ -11,7 +11,7 @@ export default function NotFoundEmbed(props: Props) {
   const replyStyle = isReply && "mb-6";
 
   return (
-    <>
+    <div className="p-3">
       {depth < 1 && (
         <div
           className={`border-skin-base bg-skin-base relative rounded-xl border p-3 ${replyStyle}`}
@@ -20,9 +20,9 @@ export default function NotFoundEmbed(props: Props) {
             <PiWarningCircleFill className="text-skin-icon-base text-2xl" />
             <span className="text-skin-base">This post is unavailable</span>
           </div>
-          {isReply && <Threadline />}
+          {isReply && <Threadline className="mt-6" />}
         </div>
       )}
-    </>
+    </div>
   );
 }

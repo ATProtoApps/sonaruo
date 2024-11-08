@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <main className="mx-auto mt-0 p-5 md:mt-16">
-      <header className="mx-auto flex max-w-xl items-center justify-between">
+      <header className="mx-auto flex max-w-xl items-center justify-between animate-fade">
         <div className="flex items-center gap-3">
           <Image
             src="/ouranos.svg"
@@ -169,7 +169,7 @@ export default function Page() {
         </p>
       </section>
       <footer className="text-skin-tertiary mt-16 text-center text-sm font-medium">
-        OURANOS · EARLY ACCESS · {new Date().getFullYear()}
+        OURANOS · {new Date().getFullYear()}
       </footer>
     </main>
   );
