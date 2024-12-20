@@ -12,7 +12,7 @@
     "@atproto/api": "^0.13.5",
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",
-    "@frames.js/render": "^0.3.12",
+    "@frames.js/render": "^0.3.14",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
     "@radix-ui/react-hover-card": "^1.1.1",

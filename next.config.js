@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   swcMinify: false,
+  swcMinify: false,
   images: {
-    unoptimized: true,    
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -15,6 +15,10 @@ const nextConfig = {
         hostname: "cardyb.bsky.app",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**",
       },
     ],
   },
